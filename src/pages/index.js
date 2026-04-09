@@ -3,8 +3,8 @@ import { supabase } from '../lib/supabase'
 import { 
   Plus, ExternalLink, Calendar, DollarSign, Users, Heart,
   MapPin, CheckCircle, Clock, AlertTriangle, ChevronDown, ChevronRight, 
-  Trash2, RefreshCw, Download, UserCheck, Home, Gift, Handshake,
-  Camera, Megaphone, LayoutDashboard, TrendingUp
+  Trash2, RefreshCw, Download, UserCheck, Home, Gift,
+  Camera, LayoutDashboard
 } from 'lucide-react'
 
 // Logo Component - Lucky Day (four-leaf clover / sunshine theme)
@@ -694,7 +694,7 @@ export default function Dashboard() {
     { id: 'donations', label: 'Donations', icon: Gift },
     { id: 'donors', label: 'Donors', icon: Heart },
     { id: 'volunteers', label: 'Volunteers', icon: UserCheck },
-    { id: 'partners', label: 'Partners', icon: Handshake },
+    { id: 'partners', label: 'Partners', icon: Users },
     { id: 'events', label: 'Events', icon: Calendar },
     { id: 'stories', label: 'Stories', icon: Camera },
     { id: 'grants', label: 'Grants', icon: DollarSign },
@@ -744,7 +744,7 @@ export default function Dashboard() {
               { value: activeRecipients.length, label: 'Recipients', icon: Home, color: 'from-green-500 to-emerald-500' },
               { value: `$${totalDonations.toLocaleString()}`, label: 'Donated', icon: Gift, color: 'from-amber-500 to-yellow-500' },
               { value: activeVolunteers.length, label: 'Volunteers', icon: UserCheck, color: 'from-sky-500 to-blue-500' },
-              { value: data.partners.length, label: 'Partners', icon: Handshake, color: 'from-violet-500 to-purple-500' },
+              { value: data.partners.length, label: 'Partners', icon: Users, color: 'from-violet-500 to-purple-500' },
               { value: pendingTasks.length, label: 'Tasks', icon: CheckCircle, color: 'from-rose-500 to-pink-500' }
             ].map((stat, i) => (
               <div key={i} className="bg-white/10 backdrop-blur-sm p-4 rounded-2xl border border-white/10">
@@ -851,7 +851,7 @@ export default function Dashboard() {
 
           {activeTab === 'partners' && (
             <>
-              <SectionHeader icon={Handshake} title="Partner Organizations" count={data.partners.length} />
+              <SectionHeader icon={Users} title="Partner Organizations" count={data.partners.length} />
               {data.partners.map(p => <PartnerItem key={p.id} partner={p} onUpdate={(item) => updateItem('partners', item)} />)}
               {data.partners.length === 0 && <p className="text-sm text-slate-400 text-center py-12">No partners yet.</p>}
             </>
